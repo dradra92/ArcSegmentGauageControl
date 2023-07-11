@@ -40,6 +40,13 @@ namespace SimpleGauageControl.UC
         public SimpleGaugeControl()
         {
             InitializeComponent();
+
+            DrawGaugae();
+        }
+
+        private void DrawGaugae()
+        {
+
         }
 
         public void StorkeThickness(double value)
