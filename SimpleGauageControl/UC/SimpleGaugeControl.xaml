@@ -6,6 +6,20 @@
              xmlns:local="clr-namespace:SimpleGauageControl.UC"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Path Stroke="Blue" StrokeThickness="40" x:Name="ProgressPath">
             <Path.Data>
@@ -43,5 +57,7 @@
                 </PathGeometry>
             </Path.Data>
         </Path>
-     </Grid>
+        <TextBox x:Name="ProgressText" Text="0%" IsReadOnly="True" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                 Background="Transparent" Foreground="#FFFFFF" FontSize="18" Margin="0,0,0,50" BorderThickness="0"/>
+    </Grid>
 </UserControl>
