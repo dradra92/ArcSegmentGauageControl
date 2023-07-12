@@ -11,6 +11,8 @@ namespace SimpleGauageControl
         public MainWindow()
         {
             InitializeComponent();
+
+            //ArcPathGauageControl gauageControl = 
         }
     }
 }
