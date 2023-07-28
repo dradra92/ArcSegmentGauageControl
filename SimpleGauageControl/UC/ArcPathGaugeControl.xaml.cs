@@ -1,6 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Point = System.Windows.Point;
 
 namespace SimpleGauageControl.UC
 {
@@ -12,7 +14,7 @@ namespace SimpleGauageControl.UC
         /// <summary>
         /// 두께
         /// </summary>
-        private double? strokeThickness;
+        private double strokeThickness = 40.0;
 
         /// <summary>
         /// x축 방향, Y축 방향 반지름
@@ -49,6 +51,13 @@ namespace SimpleGauageControl.UC
         /// </summary>
         private int gaugeNeedleHeight;
 
+        private double progressStartPointX;
+
+        private double progressStartPointY;
+
+        private double progressEndPointX;
+
+        private double progressEndPointY;
 
         /// <summary>
         /// 진행률
@@ -62,12 +71,45 @@ namespace SimpleGauageControl.UC
         {
             InitializeComponent();
 
-            DrawGaugae();
+            SetInitValue();
+
+            //DrawGaugae();
+        }
+
+
+        private void SetInitValue()
+        {
+            
+
+
         }
 
         private void DrawGaugae()
         {
+            CalculatePoint();
 
+            ProgressArcSegment.Point   = new Point(progressEndPointX, progressEndPointY);
+            EmptyPathFigure.StartPoint = new Point(progressEndPointX, progressEndPointY);
+        }
+
+        private void CalculatePoint()
+        {
+            progressStartPointX = ProgressPathFigure.StartPoint.X;
+            progressStartPointY = ProgressPathFigure.StartPoint.Y;
+
+            progressEndPointX = ProgressArcSegment.Point.X;
+            progressEndPointY = ProgressArcSegment.Point.Y;
+
+            double xRadius = ProgressArcSegment.Size.Width;
+            double yRadius = ProgressArcSegment.Size.Height;
+
+            // Calulate radian
+            double rad = progressValue * Math.PI / 100;
+
+
+            // Progress En Point Calculate;
+            progressEndPointX = progressStartPointX + xRadius - (xRadius * Math.Cos(rad));
+            progressEndPointY = progressStartPointY - (yRadius * Math.Sin(rad));
         }
 
         public void StorkeThickness(double value)
@@ -116,7 +158,10 @@ namespace SimpleGauageControl.UC
             else  this.progressValue = value;
             
             ProgressText.Text = value + "%";
+        }
 
+        private void Progress_Text_Changed(object sender, TextChangedEventArgs e)
+        {
             DrawGaugae();
         }
     }

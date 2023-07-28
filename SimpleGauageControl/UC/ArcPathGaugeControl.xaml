@@ -35,8 +35,8 @@
         <Path Stroke="White" StrokeThickness="40" x:Name="EmptyPath">
             <Path.Data>
                 <PathGeometry>
-                    <PathFigure StartPoint="370,230" x:Name="EmptyPathFigure">
-                        <ArcSegment Point="200,50" Size="170,170" SweepDirection="Counterclockwise" x:Name="EmptyArgSegment"/>
+                    <PathFigure StartPoint="200,50" x:Name="EmptyPathFigure">
+                        <ArcSegment Point="370,230" Size="170,170" SweepDirection="Clockwise" x:Name="EmptyArgSegment"/>
                     </PathFigure>
                 </PathGeometry>
             </Path.Data>
@@ -59,6 +59,6 @@
             </Path.Data>
         </Path>
         <TextBox x:Name="ProgressText" Text="0%" IsReadOnly="True" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                 Background="Transparent" Foreground="#FFFFFF" FontSize="18" Margin="0,0,0,50" BorderThickness="0"/>
+                 Background="Transparent" Foreground="#FFFFFF" FontSize="18" Margin="0,0,0,50" BorderThickness="0" TextChanged="Progress_Text_Changed" />
     </Grid>
 </UserControl>

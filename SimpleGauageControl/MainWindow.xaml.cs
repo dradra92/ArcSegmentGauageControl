@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SimpleGauageControl.UC;
+using System.Windows;
 
 
 namespace SimpleGauageControl
@@ -12,7 +13,7 @@ namespace SimpleGauageControl
         {
             InitializeComponent();
 
-            //ArcPathGauageControl gauageControl = 
+            GaugeControl.ProgressValue(70.0);
         }
     }
 }
