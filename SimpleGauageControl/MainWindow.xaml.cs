@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SimpleGauageControl.UC;
+using System.Windows;
 
 
 namespace SimpleGauageControl
@@ -11,6 +12,8 @@ namespace SimpleGauageControl
         public MainWindow()
         {
             InitializeComponent();
+
+            GaugeControl.ProgressValue(70.0);
         }
     }
 }
