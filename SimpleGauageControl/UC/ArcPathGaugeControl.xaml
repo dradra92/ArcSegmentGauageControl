@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:SimpleGauageControl.UC"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400"
-             Background="#000000">
+             Background="#000000"
+             x:Name="LocalControl">
     <UserControl.Resources>
         <Style TargetType="TextBox">
             <Style.Triggers>
@@ -36,7 +37,7 @@
             <Path.Data>
                 <PathGeometry>
                     <PathFigure StartPoint="200,50" x:Name="EmptyPathFigure">
-                        <ArcSegment Point="370,230" Size="170,170" SweepDirection="Clockwise" x:Name="EmptyArgSegment"/>
+                        <ArcSegment Point="370,230" Size="170,170" SweepDirection="Clockwise" x:Name="EmptyArcSegment"/>
                     </PathFigure>
                 </PathGeometry>
             </Path.Data>
