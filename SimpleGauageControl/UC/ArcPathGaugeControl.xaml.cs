@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace SimpleGauageControl.UC
 {
@@ -19,7 +20,7 @@ namespace SimpleGauageControl.UC
         /// <summary>
         /// x축 방향, Y축 방향 반지름
         /// </summary>
-        private Point? radious;
+        private Size? radious;
 
         /// <summary>
         /// 진행률을 표시하는 방향의 color
@@ -115,25 +116,38 @@ namespace SimpleGauageControl.UC
         public void StorkeThickness(double value)
         {
             this.strokeThickness = value;
+
+            ProgressPath.StrokeThickness = value;
+            EmptyPath.StrokeThickness = value;
+
         }
 
-        public void Radious(int xRadious, int yRadious)
+        public void Radious(double xRadious, double yRadious)
         {
-            this.radious = new Point(xRadious, yRadious);
+            this.radious = new Size(xRadious, yRadious);
+
+            ProgressArcSegment.Size = (Size)radious;
+            EmptyArcSegment.Size = (Size)radious;
         }
 
         public void ProgressBrushColor (Brush color)
         {
             progressBrushColor = color;
+
+            ProgressPath.Stroke = color;
         }
 
         public void BackgroundColor(Brush color)
         {
             backgroundColor = color;
+
+            LocalControl.Background = color;
         }
 
         public void NoneProgressBrushColor(Brush color) { 
             noneProgressBrushColor = color;
+
+            EmptyPath.Stroke = color;
         }
 
         public void GaugeNeedleWidth(int w)
@@ -149,6 +163,8 @@ namespace SimpleGauageControl.UC
         public void GaugeNeedleColor (Brush color)
         {
             this.gaugeNeedleColor = color;
+
+            NeedlePath.Stroke = color;
         }
 
         public void ProgressValue(double value)
